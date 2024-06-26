@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SpaRoot>..\..\..\jedwards.client</SpaRoot>
+    <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+    <SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
+      <Version>8.*-*</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\jedwards.client\jedwards.client.esproj" />
+    <ProjectReference Include="..\..\Application\JEdwards.Application.Implementation\JEdwards.Application.Implementations.csproj" />
+    <ProjectReference Include="..\..\Application\JEdwards.Application.Interfaces\JEdwards.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Api\JEdwards.Infrastructure.Api.Implemenations\JEdwards.Infrastructure.Api.Implemenations.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Database\JEdwards.Infrastructure.Database.Implemenations\JEdwards.Infrastructure.Database.Implemenations.csproj" />
+    <ProjectReference Include="..\jedwards.client\jedwards.client.esproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

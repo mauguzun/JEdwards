@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\JEdwards.Domain\JEdwards.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Api\JEdwards.Infrastructure.Api.Implemenations\JEdwards.Infrastructure.Api.Implemenations.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Api\JEdwards.Infrastructure.Api.Interfaces\JEdwards.Infrastructure.Api.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Database\JEdwards.Infrastructure.Database.Interfaces\JEdwards.Infrastructure.Database.Interfaces.csproj" />
+    <ProjectReference Include="..\JEdwards.Application.DTO\JEdwards.Application.DTO.csproj" />
+    <ProjectReference Include="..\JEdwards.Application.Interfaces\JEdwards.Application.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
