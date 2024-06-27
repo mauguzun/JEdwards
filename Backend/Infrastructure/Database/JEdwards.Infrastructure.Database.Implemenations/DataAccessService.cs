@@ -18,7 +18,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations
         }
 
         public Task<List<SearchQuery>> GetLatestQueriesAsync(CancellationToken cancellationToken)
-            => _context.ApiQueries.OrderByDescending(q => q.Date).Take(5).ToListAsync(cancellationToken);
+            => _context.SearchQueries.OrderByDescending(q => q.Date).Take(5).ToListAsync(cancellationToken);
 
     }
 }

@@ -3,11 +3,10 @@ using JEdwards.Application.Interfaces;
 using JEdwards.Domain.Entities;
 using NetArchTest.Rules;
 
-
 namespace ArchTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ArchTests
     {
         [TestMethod]
         public void Domain_ShouldNotHaveRefernce_ToOtherProjects()

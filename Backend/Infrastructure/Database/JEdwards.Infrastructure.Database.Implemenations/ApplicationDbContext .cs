@@ -5,7 +5,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<SearchQuery> ApiQueries { get; set; }
+        public DbSet<SearchQuery> SearchQueries { get; set; }
 
         public ApplicationDbContext() { }
 
