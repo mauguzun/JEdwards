@@ -7,7 +7,18 @@ using JEdwards.Infrastructure.Database.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+const string policy = "localhost";
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(policy, builder =>
+    {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -27,7 +38,6 @@ builder.Services.AddSingleton<IOmdbApiService>(s => new OmdbApiService(builder.C
 #region Application
 builder.Services.AddTransient<IMovieService, MovieService>();
 #endregion
-
 
 
 var app = builder.Build();
@@ -52,6 +62,6 @@ app.MapControllers();
 
 app.MapFallbackToFile("./index.html");
 
-
+app.UseCors(policy);
 
 app.Run();

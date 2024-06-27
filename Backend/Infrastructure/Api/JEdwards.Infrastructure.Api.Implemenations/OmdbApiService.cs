@@ -1,5 +1,5 @@
 ﻿using JEdwards.Application.DTO;
-using JEdwards.Domain;
+using JEdwards.Domain.Api;
 using JEdwards.Infrastructure.Api.Implemenations.Responses;
 using JEdwards.Infrastructure.Api.Interfaces;
 using Newtonsoft.Json;

@@ -1,6 +1,5 @@
 using JEdwards.Application.Interfaces;
-using JEdwards.Domain;
-using JEdwards.Infrastructure.Database.Interfaces;
+using JEdwards.Domain.Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JEdwards.Api.Controllers
@@ -18,18 +17,18 @@ namespace JEdwards.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MovieFullInfo))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        public async Task<IActionResult> GetMovieById(string imdbID, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetMovieById(Request query, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(imdbID))
+            if (string.IsNullOrWhiteSpace(query.Query))
                 return BadRequest("Title is required.");
         
 
-            var movie = await _movieService.GetMovieAsync(imdbID,  cancellationToken);
+            var movie = await _movieService.GetMovieAsync(query.Query,  cancellationToken);
             return movie switch
             {
                 { Data: null, ApiExceptionMessage: not null } => Unauthorized(movie.ApiExceptionMessage),
-                { Data: null } => BadRequest(movie.ResponseErrorMessage),
-                _ => Ok(movie.Data)
+                { Data: not null } => Ok(movie.Data),
+                _ => BadRequest(movie?.ResponseErrorMessage)
             };
         }
 
@@ -38,19 +37,20 @@ namespace JEdwards.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Movie))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        public async Task<IActionResult> SearchMovies(string title, CancellationToken cancellationToken)
+        public async Task<IActionResult> SearchMovies(Request query, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(title))
+            if (string.IsNullOrWhiteSpace(query.Query))
                 return BadRequest("Title is required.");
 
-            var searchResults = await _movieService.SearchMoviesAsync(title, cancellationToken);
-
+            var searchResults = await _movieService.SearchMoviesAsync(query.Query, cancellationToken);
+          
             return searchResults switch
             {
                 { Data: null, ApiExceptionMessage: not null } => Unauthorized(searchResults.ApiExceptionMessage),
-                { Data: null } => BadRequest(searchResults.ResponseErrorMessage),
-                _ => Ok(searchResults.Data)
+                { Data: not null } => Ok(searchResults.Data),
+                _ => BadRequest(searchResults?.ResponseErrorMessage)
             };
         }
     }
+ 
 }

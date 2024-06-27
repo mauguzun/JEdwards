@@ -35,9 +35,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JEdwards.Infrastructure.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JEdwards.Infrastructure.Database.Interfaces", "Backend\Infrastructure\Database\JEdwards.Infrastructure.Database.Interfaces\JEdwards.Infrastructure.Database.Interfaces.csproj", "{81021D8D-484A-45F0-8B23-F4BA743967B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JEdwards.Application.DTO", "Backend\Application\JEdwards.Application.DTO\JEdwards.Application.DTO.csproj", "{65CC1A02-8090-4878-9115-308B035890EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JEdwards.Application.DTO", "Backend\Application\JEdwards.Application.DTO\JEdwards.Application.DTO.csproj", "{65CC1A02-8090-4878-9115-308B035890EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{12DC47E8-DD6F-4565-A8F7-9D7582898719}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BA0C4585-4919-48EA-8883-0CBC0A77306F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiTests", "Tests\WebApiTests\WebApiTests.csproj", "{2CC59053-38C6-4377-86B6-EA6F4EB12BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchTests", "Tests\ArchTests\ArchTests.csproj", "{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +93,14 @@ Global
 		{65CC1A02-8090-4878-9115-308B035890EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65CC1A02-8090-4878-9115-308B035890EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65CC1A02-8090-4878-9115-308B035890EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC59053-38C6-4377-86B6-EA6F4EB12BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC59053-38C6-4377-86B6-EA6F4EB12BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC59053-38C6-4377-86B6-EA6F4EB12BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC59053-38C6-4377-86B6-EA6F4EB12BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +121,8 @@ Global
 		{F6153C11-47AD-421D-962F-F34C1BC4CB73} = {54E61B3A-E82B-4EF8-8AFA-4FF2F78D249E}
 		{81021D8D-484A-45F0-8B23-F4BA743967B7} = {54E61B3A-E82B-4EF8-8AFA-4FF2F78D249E}
 		{65CC1A02-8090-4878-9115-308B035890EB} = {7592C882-B59F-4BE1-9A93-C3169A78723E}
+		{2CC59053-38C6-4377-86B6-EA6F4EB12BE5} = {BA0C4585-4919-48EA-8883-0CBC0A77306F}
+		{388D1838-C1D3-4CA9-93C7-3EC2D63F5A25} = {BA0C4585-4919-48EA-8883-0CBC0A77306F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F0E884A-A7A2-4E7E-BAFE-7551970628C1}

@@ -1,4 +1,4 @@
-﻿using JEdwards.Domain;
+﻿using JEdwards.Domain.Api;
 
 namespace JEdwards.Infrastructure.Api.Implemenations.Responses
 {

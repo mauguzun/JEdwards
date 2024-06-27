@@ -1,5 +1,5 @@
 ﻿using JEdwards.Application.DTO;
-using JEdwards.Domain;
+using JEdwards.Domain.Api;
 
 namespace JEdwards.Infrastructure.Api.Interfaces
 {

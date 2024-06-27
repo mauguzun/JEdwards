@@ -21,14 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\jedwards.client\jedwards.client.esproj" />
     <ProjectReference Include="..\..\Application\JEdwards.Application.Implementation\JEdwards.Application.Implementations.csproj" />
     <ProjectReference Include="..\..\Application\JEdwards.Application.Interfaces\JEdwards.Application.Interfaces.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Api\JEdwards.Infrastructure.Api.Implemenations\JEdwards.Infrastructure.Api.Implemenations.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Database\JEdwards.Infrastructure.Database.Implemenations\JEdwards.Infrastructure.Database.Implemenations.csproj" />
-    <ProjectReference Include="..\jedwards.client\jedwards.client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
 
 </Project>

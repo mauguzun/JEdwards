@@ -1,6 +1,6 @@
 ﻿using JEdwards.Application.DTO;
 using JEdwards.Application.Interfaces;
-using JEdwards.Domain;
+using JEdwards.Domain.Api;
 using JEdwards.Domain.Entities;
 using JEdwards.Infrastructure.Api.Interfaces;
 using JEdwards.Infrastructure.Database.Interfaces;

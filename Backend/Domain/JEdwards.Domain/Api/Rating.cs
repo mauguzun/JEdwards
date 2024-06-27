@@ -1,4 +1,4 @@
-﻿namespace JEdwards.Domain
+﻿namespace JEdwards.Domain.Api
 {
     public record Rating(
         string Source,
