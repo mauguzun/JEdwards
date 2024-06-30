@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JEdwards.Infrastructure.Database.Implemenations.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ApiQueries",
+                name: "SearchQueries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -23,7 +23,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiQueries", x => x.Id);
+                    table.PrimaryKey("PK_SearchQueries", x => x.Id);
                 });
         }
 
@@ -31,7 +31,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ApiQueries");
+                name: "SearchQueries");
         }
     }
 }

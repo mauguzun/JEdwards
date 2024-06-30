@@ -56,7 +56,7 @@ namespace MyApp.Tests.Controllers
                     "Test", "2000", movieId, "Horror", "Poster", "PG-13", "2000-01-01", "120 min", "Horror",
                     "Director", "Writer", "Actor1, Actor2", "Plot", "English", "USA", "Awards",
                     new List<Rating> { new Rating("Source1", "8/10"), new Rating("Source2", "80%") },
-                    75, 8.5f, "10,000", "2000-01-01", "Box Office", "Production", "Website", "True");
+                    "75", 8.5f, "10,000", "2000-01-01", "Box Office", "Production", "Website", "True");
             
             var expectedApiResponse = new ApiResponse<MovieFullInfo> { Data = expectedMovie };
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { MoviesService } from '../../services/movies.service';
+import { MoviesService } from '../../../services/movies.service';
 import { Subscription } from 'rxjs';
-import { Movie } from '../../models/Movie';
+import { Movie } from '../../../models/Movie';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,23 +13,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SearchComponent implements OnDestroy {
 
   title: string = '';
-  search$ : Subscription | undefined ;
-  movies :Movie[] |undefined;
+  search$: Subscription | undefined;
+  movies: Movie[] | undefined;
   loading = false;
 
-  constructor(private _movieService: MoviesService,private _snackBar: MatSnackBar) {}
+  constructor(private _movieService: MoviesService, private _snackBar: MatSnackBar) { }
 
   searchMovies() {
     this.loading = true;
     this.movies = undefined;
-    
-    this.search$ =  this._movieService.searchMovie(this.title.trim()).subscribe({
+
+    this.search$ = this._movieService.searchMovie(this.title.trim()).subscribe({
       next: (movies: Movie[]) => {
         this.movies = movies;
         this.loading = false;
       },
       error: (error: HttpErrorResponse) => {
-        this._snackBar.open(error.error);
+        this._snackBar.open(error.error === Object  && 'title' ? error.error['title'] : error.error);
         this.loading = false;
       },
       complete: () => {
@@ -39,6 +39,6 @@ export class SearchComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-      this.search$?.unsubscribe();
+    this.search$?.unsubscribe();
   }
 }

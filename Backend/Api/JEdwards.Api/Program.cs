@@ -1,24 +1,18 @@
+using JEdwards.Api.Excpetions;
 using JEdwards.Application.Implementations;
 using JEdwards.Application.Interfaces;
 using JEdwards.Infrastructure.Api.Implemenations;
 using JEdwards.Infrastructure.Api.Interfaces;
 using JEdwards.Infrastructure.Database.Implemenations;
 using JEdwards.Infrastructure.Database.Interfaces;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 const string policy = "localhost";
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(policy, builder =>
-    {
-        builder
-            .AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -39,6 +33,19 @@ builder.Services.AddSingleton<IOmdbApiService>(s => new OmdbApiService(builder.C
 builder.Services.AddTransient<IMovieService, MovieService>();
 #endregion
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(policy, builder =>
+    {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -63,5 +70,7 @@ app.MapControllers();
 app.MapFallbackToFile("./index.html");
 
 app.UseCors(policy);
+
+app.UseExceptionHandler(_ => { });
 
 app.Run();

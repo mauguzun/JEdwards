@@ -1,0 +1,40 @@
+<div *ngIf="!movie">
+    <mat-spinner ></mat-spinner>
+</div>
+
+
+<mat-card *ngIf="movie">
+  <img mat-card-image [src]="movie.poster" alt="Movie Poster">
+
+  <mat-card-content>
+    <h2 mat-card-title>{{ movie.title }} ({{ movie.year }})</h2>
+    <p mat-card-subtitle>{{ movie.rated }} | {{ movie.runtime }}</p>
+    
+    <mat-divider></mat-divider>
+
+    <p><strong>Plot:</strong> {{ movie.plot }}</p>
+
+    <p><strong>Director:</strong> {{ movie.director }}</p>
+    <p><strong>Writer:</strong> {{ movie.writer }}</p>
+    <p><strong>Actors:</strong> {{ movie.actors }}</p>
+
+    <p><strong>Genre:</strong> {{ movie.genre }}</p>
+    <p><strong>Language:</strong> {{ movie.language }}</p>
+    <p><strong>Country:</strong> {{ movie.country }}</p>
+    
+    <mat-divider></mat-divider>
+
+    <p><strong>IMDb Rating:</strong> {{ movie.imdbRating }}/10 ({{ movie.imdbVotes }} votes)</p>
+
+    <p *ngIf="movie.ratings && movie.ratings.length > 0">
+      <strong>Ratings:</strong>
+      <span *ngFor="let rating of movie.ratings">
+        {{ rating.source }}: {{ rating.value }}
+      </span>
+    </p>
+    
+    <mat-divider></mat-divider>
+
+    <p><strong>Awards:</strong> {{ movie.awards }}</p>
+  </mat-card-content>
+</mat-card>

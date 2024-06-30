@@ -17,7 +17,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("JEdwards.Domain.SearchQuery", b =>
+            modelBuilder.Entity("JEdwards.Domain.Entities.SearchQuery", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace JEdwards.Infrastructure.Database.Implemenations.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApiQueries");
+                    b.ToTable("SearchQueries");
                 });
 #pragma warning restore 612, 618
         }

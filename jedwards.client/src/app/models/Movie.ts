@@ -5,3 +5,4 @@ export class Movie {
     type!: string;
     poster!: string
 }
+

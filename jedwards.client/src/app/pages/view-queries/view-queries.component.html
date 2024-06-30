@@ -1,1 +1,37 @@
-<p>view-queries works!</p>
+<div *ngIf="loading; else elseBlock">
+    <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #elseBlock>
+
+    <table mat-table [dataSource]="queries" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM HH:mm:ss' }} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="query">
+            <th mat-header-cell *matHeaderCellDef> Query </th>
+            <td mat-cell *matCellDef="let element"> {{element.query}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="errorMessage">
+            <th mat-header-cell *matHeaderCellDef> Error Message </th>
+            <td mat-cell *matCellDef="let element"> {{element.errorMessage}} </td>
+        </ng-container>
+
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</ng-template>

@@ -19,8 +19,6 @@ namespace JEdwards.Application.Implementations
         {
             var response = await _omdbApiService.SearchMoviesAsync(query, cancellationToken);
 
-
-              
             var (_, responseErrorMessage, apiExceptionMessage) = response;
 
             await _dataAccessService.AddQueryAsync(new SearchQuery(query)

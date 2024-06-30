@@ -23,12 +23,12 @@ namespace JEdwards.Infrastructure.Api.Implemenations
             var request = new RestRequest($"?apikey={_apiKey}&s={title}", Method.Get);
             var response = await client.ExecuteAsync<MoviesSearchResponse>(request, cancellationToken);
 
-
             return response switch
             {
-                { ErrorException: not null } => new ApiResponse<List<Movie>> { ApiExceptionMessage = response.ErrorException.Message },
+                { ErrorException: not null } => throw response.ErrorException,
                 { Data: { TotalResults: 0 } } => new ApiResponse<List<Movie>>() { ResponseErrorMessage = JsonConvert.DeserializeObject<ResponseError>(response.Content).Error },
-                { Data: { Search: var searchResults } } => new ApiResponse<List<Movie>>() { Data = searchResults }
+                { Data: { Search: var searchResults } } => new ApiResponse<List<Movie>>() { Data = searchResults },
+                _ => throw new NotImplementedException($"{nameof(SearchMoviesAsync)} query {title} raise not implemeneted excptions"),
             };
 
         }
@@ -42,9 +42,10 @@ namespace JEdwards.Infrastructure.Api.Implemenations
 
             return response switch
             {
-                { ErrorException: not null } => new ApiResponse<MovieFullInfo> { ApiExceptionMessage = response.ErrorException.Message },
+                { ErrorException: not null } => throw response.ErrorException,
                 { Data.Response: "False" } => new ApiResponse<MovieFullInfo> { ResponseErrorMessage = JsonConvert.DeserializeObject<ResponseError>(response.Content).Error },
-                _ => new ApiResponse<MovieFullInfo> { Data = response.Data }
+                { Data: not null }   => new ApiResponse<MovieFullInfo> { Data = response.Data },
+                _ => throw new NotImplementedException($"{nameof(GetMovieAsync)} query {imdbID} raise not implemeneted excptions"),
             };
 
         }

@@ -28,7 +28,7 @@
           {{movie.type}}
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>View More</button>
+          <button class="primary" [routerLink]="['/view-movie', movie.imdbID]" mat-button>View More</button>
         </mat-card-actions>
       </mat-card>
 </div>
