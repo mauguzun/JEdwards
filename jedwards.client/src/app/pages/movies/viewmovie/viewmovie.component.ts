@@ -46,8 +46,6 @@ export class ViewMovieComponent implements OnDestroy, OnInit {
    
   }
 
-
-
   ngOnDestroy() {
     this.search$?.unsubscribe();
   }

@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Movie } from '../models/Movie';
 import { SearchQuery } from '../models/SearchQuery';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QueriesService {
 
-  private apiUrl = 'https://localhost:7091/SearchQuery/'; // Replace with your API endpoint
+  private apiUrl = `${environment.backendUrl}/SearchQuery/`; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 

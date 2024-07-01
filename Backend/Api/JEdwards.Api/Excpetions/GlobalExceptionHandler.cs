@@ -5,23 +5,22 @@ namespace JEdwards.Api.Excpetions
 {
     public  class GlobalExceptionHandler : IExceptionHandler
     {
-      
         public async ValueTask<bool> TryHandleAsync(
             HttpContext httpContext,
             Exception exception,
             CancellationToken cancellationToken)
         {
-           
+            var statusCode = exception is HttpRequestException httpEx ? (int?)httpEx.StatusCode ?? StatusCodes.Status500InternalServerError : StatusCodes.Status500InternalServerError;
+
             var problemDetails = new ProblemDetails
             {
-                Status = StatusCodes.Status500InternalServerError,
+                Status = statusCode,
                 Title = exception.Message
             };
 
             httpContext.Response.StatusCode = problemDetails.Status.Value;
 
-            await httpContext.Response
-                .WriteAsJsonAsync(problemDetails, cancellationToken);
+            await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 
             return true;
         }

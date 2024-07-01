@@ -23,6 +23,7 @@ namespace JEdwards.Infrastructure.Api.Implemenations
             var request = new RestRequest($"?apikey={_apiKey}&s={title}", Method.Get);
             var response = await client.ExecuteAsync<MoviesSearchResponse>(request, cancellationToken);
 
+            
             return response switch
             {
                 { ErrorException: not null } => throw response.ErrorException,

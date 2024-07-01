@@ -16,6 +16,7 @@ export class SearchComponent implements OnDestroy {
   search$: Subscription | undefined;
   movies: Movie[] | undefined;
   loading = false;
+  minimalCharsCount = 3;
 
   constructor(private _movieService: MoviesService, private _snackBar: MatSnackBar) { }
 

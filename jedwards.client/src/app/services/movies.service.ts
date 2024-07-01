@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/Movie';
 import { MovieFullInfo } from '../models/MovieFullInfo';
+import { environment } from '../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { MovieFullInfo } from '../models/MovieFullInfo';
 export class MoviesService {
 
 
-  private apiUrl = 'https://localhost:7091/Movie/'; // Replace with your API endpoint
+  private apiUrl = `${environment.backendUrl}/Movie/`; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 
