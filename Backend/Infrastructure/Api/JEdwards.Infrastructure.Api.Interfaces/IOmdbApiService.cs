@@ -7,7 +7,7 @@ namespace JEdwards.Infrastructure.Api.Interfaces
     {
         public Task<ApiResponse<List<Movie>>> SearchMoviesAsync(string title, CancellationToken cancellationToken);
 
-        public Task<ApiResponse<MovieFullInfo>> GetMovieAsync(string imdbID, CancellationToken cancellationToken);
+        public Task<ApiResponse<MovieDetail>> GetMovieAsync(string imdbID, CancellationToken cancellationToken);
 
     }
 }

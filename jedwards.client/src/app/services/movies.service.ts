@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/Movie';
-import { MovieFullInfo } from '../models/MovieFullInfo';
+import { MovieDetail } from '../models/MovieDetail';
 import { environment } from '../../environments/environment.development';
+import { SearchRequest } from '../models/SearchRequest';
 
 
 @Injectable({
@@ -11,17 +12,16 @@ import { environment } from '../../environments/environment.development';
 })
 export class MoviesService {
 
-
-  private apiUrl = `${environment.backendUrl}/Movie/`; // Replace with your API endpoint
+  private apiUrl = `${environment.backendUrl}/Movie/`; 
 
   constructor(private http: HttpClient) { }
 
   searchMovie(query: string): Observable<Movie[]> {
-    return this.http.post<any>(`${this.apiUrl}search`, { query });
+    return this.http.post<any>(`${this.apiUrl}search`, new  SearchRequest(query));
   }
 
-  viewMovie(query: string) : Observable<MovieFullInfo> {
-    return this.http.post<any>(`${this.apiUrl}`, { query });
+  viewMovie(query: string) : Observable<MovieDetail> {
+    return this.http.post<any>(`${this.apiUrl}`, new  SearchRequest(query));
   }
 }
 

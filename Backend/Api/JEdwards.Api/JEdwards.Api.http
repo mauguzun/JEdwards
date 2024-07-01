@@ -1,6 +1,0 @@
-@JEdwards.Server_HostAddress = http://localhost:5096
-
-GET {{JEdwards.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

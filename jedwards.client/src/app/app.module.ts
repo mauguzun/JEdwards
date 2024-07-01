@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

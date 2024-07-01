@@ -1,5 +1,49 @@
 .example-card {
-    max-width: 400px;
-    cursor: pointer;
+  max-width: 400px;
+  cursor: pointer;
+}
+
+.search-container {
+  text-align: center;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.example-card {
+  width: 300px;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .example-card {
+    width: 100%;
+    max-width: 300px;
   }
-  
+}
+
+.movie-grid {
+  max-width: 1200px;
+}
+
+
+.image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

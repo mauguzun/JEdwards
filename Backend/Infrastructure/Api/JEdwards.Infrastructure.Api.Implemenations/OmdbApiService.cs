@@ -22,7 +22,6 @@ namespace JEdwards.Infrastructure.Api.Implemenations
 
             var request = new RestRequest($"?apikey={_apiKey}&s={title}", Method.Get);
             var response = await client.ExecuteAsync<MoviesSearchResponse>(request, cancellationToken);
-
             
             return response switch
             {
@@ -34,18 +33,18 @@ namespace JEdwards.Infrastructure.Api.Implemenations
 
         }
 
-        public async Task<ApiResponse<MovieFullInfo>> GetMovieAsync(string imdbID, CancellationToken cancellationToken)
+        public async Task<ApiResponse<MovieDetail>> GetMovieAsync(string imdbID, CancellationToken cancellationToken)
         {
             RestClient client = _RestClientWithSetting();
 
             var request = new RestRequest($"?apikey={_apiKey}&i={imdbID}&plot=short", Method.Get);
-            var response = await client.ExecuteAsync<MovieFullInfo>(request, cancellationToken);
+            var response = await client.ExecuteAsync<MovieDetail>(request, cancellationToken);
 
             return response switch
             {
                 { ErrorException: not null } => throw response.ErrorException,
-                { Data.Response: "False" } => new ApiResponse<MovieFullInfo> { ResponseErrorMessage = JsonConvert.DeserializeObject<ResponseError>(response.Content).Error },
-                { Data: not null }   => new ApiResponse<MovieFullInfo> { Data = response.Data },
+                { Data.Response: "False" } => new ApiResponse<MovieDetail> { ResponseErrorMessage = JsonConvert.DeserializeObject<ResponseError>(response.Content).Error },
+                { Data: not null }   => new ApiResponse<MovieDetail> { Data = response.Data },
                 _ => throw new NotImplementedException($"{nameof(GetMovieAsync)} query {imdbID} raise not implemeneted excptions"),
             };
 

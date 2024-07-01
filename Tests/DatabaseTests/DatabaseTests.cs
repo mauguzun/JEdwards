@@ -18,7 +18,7 @@ namespace MyApp.Tests
         public void Save_ThenLoad_CollectionValid()
         {
             // Arange
-             var expectedResult = new List<SearchQuery> { new SearchQuery(1.ToString()) , new SearchQuery(2.ToString()) };
+            var expectedResult = new List<SearchQuery> { new SearchQuery(1.ToString()), new SearchQuery(2.ToString()) };
             _dbContext.SearchQueries.AddRange(expectedResult);
             _dbContext.SaveChanges();
 
@@ -26,9 +26,7 @@ namespace MyApp.Tests
             var testResult = _dbContext.SearchQueries.ToList();
 
             // Assert
-            CollectionAssert.AreEqual(expectedResult, testResult); 
+            CollectionAssert.AreEqual(expectedResult, testResult);
         }
-
-        
     }
 }

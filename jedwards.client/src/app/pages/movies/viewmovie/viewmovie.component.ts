@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { MoviesService } from '../../../services/movies.service';
-import { MovieFullInfo } from '../../../models/MovieFullInfo';
+import { MovieDetail } from '../../../models/MovieDetail';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class ViewMovieComponent implements OnDestroy, OnInit {
 
   id: string = '';
   search$: Subscription | undefined;
-  movie: MovieFullInfo | undefined;
+  movie: MovieDetail | undefined;
   loading = false;
 
   constructor(private _movieService: MoviesService, private _snackBar: MatSnackBar, private _route: ActivatedRoute) {}
@@ -31,7 +31,7 @@ export class ViewMovieComponent implements OnDestroy, OnInit {
       this._snackBar.open(`moview wiht that id not exist ${imdbID}`)
     }else{
       this.search$ = this._movieService.viewMovie(imdbID).subscribe({
-        next: (movies: MovieFullInfo) => {
+        next: (movies: MovieDetail) => {
           this.movie = movies;
         },
         error: (error: HttpErrorResponse) => {

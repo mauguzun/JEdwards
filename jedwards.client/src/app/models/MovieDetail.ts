@@ -1,7 +1,7 @@
 import { Movie } from "./Movie";
 import { Rating } from "./Rating";
 
-export class MovieFullInfo extends Movie {
+export class MovieDetail extends Movie {
     rated!: string;
     released!: string;
     runtime!: string;

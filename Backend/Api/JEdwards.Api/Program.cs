@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "Movie api",
-        Description = "Api",
+        Description = "Very important Api",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new OpenApiContact
         {
@@ -39,9 +39,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    // using System.Reflection;
-    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 });
 
 

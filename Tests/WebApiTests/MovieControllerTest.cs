@@ -36,7 +36,7 @@ namespace MyApp.Tests.Controllers
             _mockMovieService.Setup(s => s.SearchMoviesAsync(testTitle, CancellationToken.None)).ReturnsAsync(expectedApiResponse);
 
             // Act
-            var result = (ObjectResult) await _controller.SearchMovies(new Request(testTitle), CancellationToken.None) ;
+            var result = (ObjectResult) await _controller.SearchMoviesByTitleAsync(new SearchRequest(testTitle), CancellationToken.None) ;
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode , $"should be {HttpStatusCode.OK}");
@@ -52,24 +52,24 @@ namespace MyApp.Tests.Controllers
         {
             string movieId = "test";
             var expectedMovie =
-                new MovieFullInfo(
+                new MovieDetail(
                     "Test", "2000", movieId, "Horror", "Poster", "PG-13", "2000-01-01", "120 min", "Horror",
                     "Director", "Writer", "Actor1, Actor2", "Plot", "English", "USA", "Awards",
                     new List<Rating> { new Rating("Source1", "8/10"), new Rating("Source2", "80%") },
                     "75", 8.5f, "10,000", "2000-01-01", "Box Office", "Production", "Website", "True");
             
-            var expectedApiResponse = new ApiResponse<MovieFullInfo> { Data = expectedMovie };
+            var expectedApiResponse = new ApiResponse<MovieDetail> { Data = expectedMovie };
 
             _mockMovieService.Setup(s => s.GetMovieAsync(movieId, CancellationToken.None)).ReturnsAsync(expectedApiResponse);
 
             // Act
-            var result = (ObjectResult)await _controller.GetMovieById(new Request(movieId), CancellationToken.None);
+            var result = (ObjectResult)await _controller.GetMovieByIdAsync(new SearchRequest(movieId), CancellationToken.None);
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode, $"should be {HttpStatusCode.OK}");
 
-            var resultValue = result.Value as MovieFullInfo;
+            var resultValue = result.Value as MovieDetail;
             Assert.IsNotNull(resultValue);
             Assert.AreEqual(expectedMovie.Title, resultValue.Title);
         }
@@ -78,10 +78,10 @@ namespace MyApp.Tests.Controllers
         public async Task GetMovieAsync_ReturnNotFoundResult()
         {
             //asert
-            _mockMovieService.Setup(s => s.GetMovieAsync("movieId", CancellationToken.None)).ReturnsAsync(new ApiResponse<MovieFullInfo>());
+            _mockMovieService.Setup(s => s.GetMovieAsync("movieId", CancellationToken.None)).ReturnsAsync(new ApiResponse<MovieDetail>());
 
             // Act
-            var result = (BadRequestObjectResult) await _controller.SearchMovies(new Request("movieId"), CancellationToken.None);
+            var result = (BadRequestObjectResult) await _controller.SearchMoviesByTitleAsync(new SearchRequest("movieId"), CancellationToken.None);
 
             // Assert
             Assert.IsNotNull(result);
