@@ -2,7 +2,7 @@
 using JEdwards.Infrastructure.Database.Implemenations;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyApp.Tests
+namespace DatabaseTests
 {
     [TestClass]
     public class DatabaseTests

@@ -6,7 +6,6 @@ using JEdwards.Infrastructure.Api.Interfaces;
 using JEdwards.Infrastructure.Database.Implemenations;
 using JEdwards.Infrastructure.Database.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 

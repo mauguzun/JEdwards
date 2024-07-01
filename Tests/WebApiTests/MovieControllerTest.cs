@@ -1,4 +1,4 @@
-using JEdwards.Api.Controllers;
+using JEdwards.Api.Controllers.V1;
 using JEdwards.Application.DTO;
 using JEdwards.Application.Interfaces;
 using JEdwards.Domain.Api;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 
 
-namespace MyApp.Tests.Controllers
+namespace WebApiTests
 {
     [TestClass]
     public class MoviesControllerTests
@@ -36,10 +36,10 @@ namespace MyApp.Tests.Controllers
             _mockMovieService.Setup(s => s.SearchMoviesAsync(testTitle, CancellationToken.None)).ReturnsAsync(expectedApiResponse);
 
             // Act
-            var result = (ObjectResult) await _controller.SearchMoviesByTitleAsync(new SearchRequest(testTitle), CancellationToken.None) ;
+            var result = (ObjectResult)await _controller.SearchMoviesByTitleAsync(new SearchRequest(testTitle), CancellationToken.None);
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode , $"should be {HttpStatusCode.OK}");
+            Assert.AreEqual((int)HttpStatusCode.OK, result.StatusCode, $"should be {HttpStatusCode.OK}");
 
             var resultValue = result.Value as List<Movie>;
             Assert.AreEqual(expectedMoviesList.Count, resultValue.Count, $"should be {expectedMoviesList.Count}");
@@ -57,7 +57,7 @@ namespace MyApp.Tests.Controllers
                     "Director", "Writer", "Actor1, Actor2", "Plot", "English", "USA", "Awards",
                     new List<Rating> { new Rating("Source1", "8/10"), new Rating("Source2", "80%") },
                     "75", 8.5f, "10,000", "2000-01-01", "Box Office", "Production", "Website", "True");
-            
+
             var expectedApiResponse = new ApiResponse<MovieDetail> { Data = expectedMovie };
 
             _mockMovieService.Setup(s => s.GetMovieAsync(movieId, CancellationToken.None)).ReturnsAsync(expectedApiResponse);
@@ -81,7 +81,7 @@ namespace MyApp.Tests.Controllers
             _mockMovieService.Setup(s => s.GetMovieAsync("movieId", CancellationToken.None)).ReturnsAsync(new ApiResponse<MovieDetail>());
 
             // Act
-            var result = (BadRequestObjectResult) await _controller.SearchMoviesByTitleAsync(new SearchRequest("movieId"), CancellationToken.None);
+            var result = (BadRequestObjectResult)await _controller.SearchMoviesByTitleAsync(new SearchRequest("movieId"), CancellationToken.None);
 
             // Assert
             Assert.IsNotNull(result);
